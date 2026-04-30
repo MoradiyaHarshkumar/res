@@ -75,7 +75,7 @@ class Product
 
     public function delete(int $id): void
     {
-        $stmt = $this->conn->prepare("UPDATE products SET is_deleted = 1 WHERE id = :id");
+        $stmt = $this->conn->prepare("DELETE FROM products WHERE id = :id");
         $stmt->execute([':id' => $id]);
     }
 }

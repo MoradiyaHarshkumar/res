@@ -31,8 +31,10 @@ Run:
 http://localhost/practical_assignment_3_common_mvc/
 
 Important:
-Delete does not physically delete from database.
-It only sets is_deleted = 1, so record is hidden from the screen.
+Student delete is soft delete.
+It only sets is_deleted = 1, so student record is hidden from the screen.
+Product delete is hard delete.
+It completely removes product record from the database.
 Both tables include created_at and updated_at columns.
 
 No Bootstrap and no styling is used.

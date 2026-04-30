@@ -51,6 +51,6 @@
         <?php endforeach; ?>
     </table>
 
-    <p>Delete hides record from screen only. It sets is_deleted = 1.</p>
+    <p>Product delete removes record completely from database.</p>
 </body>
 </html>

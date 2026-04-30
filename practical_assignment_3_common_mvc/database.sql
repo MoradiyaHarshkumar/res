@@ -1,6 +1,7 @@
 -- Practical Assignment 3 SQL Queries
 -- Common MVC project database.
--- Delete is soft delete: records are hidden from screen, not physically removed.
+-- Student delete is soft delete: records are hidden from screen, not physically removed.
+-- Product delete is hard delete: records are physically removed from database.
 
 CREATE DATABASE IF NOT EXISTS practical_assignment_3;
 USE practical_assignment_3;
@@ -74,8 +75,8 @@ INSERT INTO products (product_name, category, price, quantity) VALUES
 --     price = 150.00, quantity = 20
 -- WHERE id = 1;
 
--- Soft delete product
--- UPDATE products SET is_deleted = 1 WHERE id = 1;
+-- Hard delete product
+-- DELETE FROM products WHERE id = 1;
 
 -- SELECT * FROM products
 -- WHERE is_deleted = 0
