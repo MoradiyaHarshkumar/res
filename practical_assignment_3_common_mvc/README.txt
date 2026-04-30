@@ -33,5 +33,6 @@ http://localhost/practical_assignment_3_common_mvc/
 Important:
 Delete does not physically delete from database.
 It only sets is_deleted = 1, so record is hidden from the screen.
+Both tables include created_at and updated_at columns.
 
 No Bootstrap and no styling is used.

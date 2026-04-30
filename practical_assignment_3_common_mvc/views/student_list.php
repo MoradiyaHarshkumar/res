@@ -32,6 +32,8 @@
             <th>Course</th>
             <th>Semester</th>
             <th>Contact Number</th>
+            <th>Created At</th>
+            <th>Updated At</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -43,6 +45,8 @@
                 <td><?php echo htmlspecialchars($student['course']); ?></td>
                 <td><?php echo htmlspecialchars($student['semester']); ?></td>
                 <td><?php echo htmlspecialchars($student['contact_no']); ?></td>
+                <td><?php echo htmlspecialchars($student['created_at']); ?></td>
+                <td><?php echo htmlspecialchars($student['updated_at']); ?></td>
                 <td><a href="index.php?module=student&action=edit&id=<?php echo $student['id']; ?>">Edit</a></td>
                 <td><a href="index.php?module=student&action=delete&id=<?php echo $student['id']; ?>">Delete</a></td>
             </tr>

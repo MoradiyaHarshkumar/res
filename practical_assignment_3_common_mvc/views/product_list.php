@@ -32,6 +32,7 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Created At</th>
+            <th>Updated At</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -43,6 +44,7 @@
                 <td><?php echo htmlspecialchars($product['price']); ?></td>
                 <td><?php echo htmlspecialchars($product['quantity']); ?></td>
                 <td><?php echo htmlspecialchars($product['created_at']); ?></td>
+                <td><?php echo htmlspecialchars($product['updated_at']); ?></td>
                 <td><a href="index.php?module=product&action=edit&id=<?php echo $product['id']; ?>">Edit</a></td>
                 <td><a href="index.php?module=product&action=delete&id=<?php echo $product['id']; ?>">Delete</a></td>
             </tr>
