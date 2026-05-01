@@ -1,0 +1,26 @@
+PlayerID,Name,Position,Age,Height,Weight,College,Salary
+1,LeBron James,SF,35,6-9,250,None,37436858
+2,Kevin Durant,SF,31,6-10,240,Texas,40108950
+3,Stephen Curry,PG,32,6-3,185,Davidson,40231758
+4,James Harden,SG,30,6-5,220,Arizona State,38199000
+5,Kawhi Leonard,SF,29,6-7,225,San Diego State,34379150
+6,Russell Westbrook,PG,31,6-3,200,UCLA,38506482
+7,Chris Paul,PG,35,6-0,175,Wake Forest,38506482
+8,Klay Thompson,SG,30,6-6,215,Washington State,32742000
+9,Paul George,SF,30,6-8,220,Fresno State,33005556
+10,Jimmy Butler,SF,30,6-7,230,Marquette,32742000
+11,Kyrie Irving,PG,28,6-2,195,Duke,31742000
+12,Damian Lillard,PG,30,6-2,195,Weber State,31626953
+13,Giannis Antetokounmpo,PF,25,6-11,242,None,27528088
+14,Karl-Anthony Towns,C,24,7-0,248,Kentucky,27285000
+15,Anthony Davis,PF,27,6-10,253,Kentucky,27093019
+16,Kemba Walker,PG,30,6-0,184,Connecticut,32742000
+17,Khris Middleton,SF,28,6-7,222,Texas A&M,32742000
+18,Tobias Harris,PF,27,6-8,226,Tennessee,32742000
+19,Bradley Beal,SG,27,6-4,207,Florida,28751775
+20,Blake Griffin,PF,31,6-9,250,Oklahoma,34234964
+21,Kyle Lowry,PG,34,6-0,196,Villanova,31200000
+22,Al Horford,C,34,6-9,240,Florida,28000000
+23,DeMar DeRozan,SG,30,6-6,220,USC,27739975
+24,Nikola Jokic,C,25,6-11,284,None,27504630
+25,Rudy Gobert,C,28,7-1,258,None,26692093
