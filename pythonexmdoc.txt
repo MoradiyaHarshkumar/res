@@ -1,0 +1,240 @@
+installation :- pip install numpy pandas scikit-learn
+
+charusat port :- 172.16.6.2
+
+---------------------algorithms---------------------------
+
+# -----------------------------------
+# 1. Import Libraries
+# -----------------------------------
+import numpy as np
+import pandas as pd
+
+# -----------------------------------
+# 2. Create NumPy Array
+# -----------------------------------
+arr = np.array([[10, 20, 30],
+                [40, 50, 60],
+                [70, 80, 90]])
+
+print("NumPy Array:\n", arr)
+
+# -----------------------------------
+# 3. Pandas Series & DataFrame
+# -----------------------------------
+series = pd.Series([10, 20, 30, 40])
+print("\nSeries:\n", series)
+
+df_sample = pd.DataFrame({
+    "Math": [80, 90, 70],
+    "Science": [85, 75, 95]
+})
+print("\nDataFrame:\n", df_sample)
+
+# -----------------------------------
+# 4. Load Dataset
+# -----------------------------------
+df = pd.read_csv("online_exam_data.csv")
+print("\nDataset:\n", df)
+
+# -----------------------------------
+# 5. Separate Features & Target
+# -----------------------------------
+X = df.iloc[:, :-1]   # ❗ keep as DataFrame (not .values yet)
+y = df.iloc[:, -1]
+
+# -----------------------------------
+# 6. Handle Missing Values (FIXED)
+# -----------------------------------
+from sklearn.impute import SimpleImputer
+
+# ❗ Separate numeric and categorical columns
+num_cols = X.select_dtypes(include=['number'])
+cat_cols = X.select_dtypes(include=['object'])
+
+# ❗ Apply mean ONLY to numeric
+num_imputer = SimpleImputer(strategy='mean')
+num_cols = pd.DataFrame(num_imputer.fit_transform(num_cols),
+                        columns=num_cols.columns)
+
+# ❗ Apply most_frequent to categorical
+cat_imputer = SimpleImputer(strategy='most_frequent')
+cat_cols = pd.DataFrame(cat_imputer.fit_transform(cat_cols),
+                        columns=cat_cols.columns)
+
+# ❗ Combine back
+X = pd.concat([cat_cols, num_cols], axis=1)
+
+# -----------------------------------
+# 7. Encoding Categorical Data
+# -----------------------------------
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+from sklearn.compose import ColumnTransformer
+
+# ❗ Find categorical column indexes
+cat_indexes = [X.columns.get_loc(col) for col in cat_cols.columns]
+
+ct = ColumnTransformer(
+    transformers=[('encoder', OneHotEncoder(), cat_indexes)],
+    remainder='passthrough'
+)
+
+X = ct.fit_transform(X)
+
+# -----------------------------------
+# 8. Target Encoding
+# -----------------------------------
+le = LabelEncoder()
+y_encoded = le.fit_transform(y)
+
+# -----------------------------------
+# 9. Split Dataset
+# -----------------------------------
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y_encoded, test_size=0.2, random_state=1)
+
+# -----------------------------------
+# 10. Feature Scaling
+# -----------------------------------
+from sklearn.preprocessing import StandardScaler
+
+sc = StandardScaler(with_mean=False)  
+# ❗ FIX: sparse matrix ke liye with_mean=False
+
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+
+# -----------------------------------
+# 11. Linear Regression
+# -----------------------------------
+from sklearn.linear_model import LinearRegression
+
+lin_model = LinearRegression()
+lin_model.fit(X_train, y_train)
+
+y_pred_lin = lin_model.predict(X_test)
+
+# -----------------------------------
+# 12. Logistic Regression
+# -----------------------------------
+from sklearn.linear_model import LogisticRegression
+
+log_model = LogisticRegression(max_iter=1000)  
+# ❗ FIX: convergence issue avoid
+
+log_model.fit(X_train, y_train)
+
+y_pred_log = log_model.predict(X_test)
+
+# -----------------------------------
+# 13. Evaluation
+# -----------------------------------
+from sklearn.metrics import r2_score, accuracy_score
+
+print("\n--- Linear Regression ---")
+print("Predicted:", y_pred_lin)
+print("R2 Score:", r2_score(y_test, y_pred_lin))
+
+print("\n--- Logistic Regression ---")
+print("Predicted:", y_pred_log)
+print("Accuracy:", accuracy_score(y_test, y_pred_log))
+
+
+
+---------------------oops-----------------------------------
+
+# -----------------------------------
+# Student Class
+# -----------------------------------
+class Student:
+
+    def __init__(self, name, roll, marks):
+        self.name = name
+        self.roll = roll
+        self.marks = marks
+
+    def average(self):
+        return sum(self.marks) / len(self.marks)
+
+    def display(self):
+        print("\nName:", self.name)
+        print("Roll No:", self.roll)
+        print("Marks:", self.marks)
+        print("Average:", round(self.average(), 2))
+
+
+# -----------------------------------
+# Main Program
+# -----------------------------------
+students = []
+
+while True:
+    print("\n1. Add Student  2. Display All  3. Topper  4. Exit")
+
+    try:
+        choice = int(input("Enter choice: "))
+    except:
+        print("Invalid input! Enter number only.")
+        continue
+
+    # Add Students
+    if choice == 1:
+        try:
+            n = int(input("How many students: "))
+        except:
+            print("Invalid number!")
+            continue
+
+        for i in range(n):
+            print(f"\nStudent {i+1}")
+
+            name = input("Enter name: ")
+
+            try:
+                roll = int(input("Enter roll: "))
+            except:
+                print("Invalid roll! Skipping student.")
+                continue
+
+            marks = []
+            for j in range(3):
+                try:
+                    m = int(input(f"Enter marks {j+1}: "))
+                    marks.append(m)
+                except:
+                    print("Invalid marks! Using 0.")
+                    marks.append(0)
+
+            students.append(Student(name, roll, marks))
+
+    # Display All
+    elif choice == 2:
+        if not students:
+            print("No students added yet!")
+        else:
+            print("\n--- All Students ---")
+            for s in students:
+                s.display()
+
+    # Topper
+    elif choice == 3:
+        if not students:
+            print("No students available!")
+        else:
+            topper = students[0]
+            for s in students:
+                if s.average() > topper.average():
+                    topper = s
+
+            print("\n--- Topper ---")
+            topper.display()
+
+    # Exit
+    elif choice == 4:
+        print("Thank You!")
+        break
+
+    else:
+        print("Invalid choice! Try again.")
