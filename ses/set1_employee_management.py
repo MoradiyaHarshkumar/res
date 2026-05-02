@@ -8,14 +8,15 @@ class Employee:
         return self.salary
 
     def display_employee(self):
+        print("\nEmployee Details")
         print("Employee ID:", self.employee_id)
         print("Name:", self.name)
         print("Salary:", self.calculate_salary())
 
 
-emp1 = Employee(101, "Rahul", 25000)
-emp2 = Employee(102, "Priya", 30000)
+employee_id = int(input("Enter employee ID: "))
+name = input("Enter employee name: ")
+salary = float(input("Enter employee salary: "))
 
-emp1.display_employee()
-print()
-emp2.display_employee()
+employee = Employee(employee_id, name, salary)
+employee.display_employee()

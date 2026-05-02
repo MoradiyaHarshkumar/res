@@ -1,8 +1,3 @@
-"""
-Set 1 - Q1
-Line class program
-"""
-
 import math
 
 
@@ -24,12 +19,17 @@ class Line:
         return ans
 
     def display_points(self):
+        print("\nLine Points")
         print("Point 1:", (self.x1, self.y1))
         print("Point 2:", (self.x2, self.y2))
 
 
-line1 = Line(2, 3, 6, 7)
+x1 = float(input("Enter x1: "))
+y1 = float(input("Enter y1: "))
+x2 = float(input("Enter x2: "))
+y2 = float(input("Enter y2: "))
 
-line1.display_points()
-print("Length of line:", line1.length())
-print("Slope of line:", line1.slope())
+line = Line(x1, y1, x2, y2)
+line.display_points()
+print("Length of line:", line.length())
+print("Slope of line:", line.slope())

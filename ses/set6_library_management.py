@@ -9,16 +9,21 @@ class Book:
         self.issued = True
 
     def display_book(self):
+        print("\nBook Details")
         print("Title:", self.title)
         print("Author:", self.author)
         print("Publisher:", self.publisher)
         print("Issued:", self.issued)
 
 
-book1 = Book("Python Programming", "Guido", "Tech Press")
-book2 = Book("Data Science", "John", "ABC Publisher")
-book1.issue_book()
+title = input("Enter book title: ")
+author = input("Enter author name: ")
+publisher = input("Enter publisher name: ")
 
-book1.display_book()
-print()
-book2.display_book()
+book = Book(title, author, publisher)
+
+choice = input("Do you want to issue this book? (yes/no): ")
+if choice.lower() == "yes":
+    book.issue_book()
+
+book.display_book()

@@ -9,12 +9,18 @@ class Patient:
         self.doctor = doctor_name
 
     def display_patient(self):
+        print("\nPatient Details")
         print("Patient Name:", self.name)
         print("Age:", self.age)
         print("Disease:", self.disease)
         print("Doctor:", self.doctor)
 
 
-patient1 = Patient("Amit", 45, "Fever")
-patient1.assign_doctor("Dr. Mehta")
-patient1.display_patient()
+name = input("Enter patient name: ")
+age = int(input("Enter patient age: "))
+disease = input("Enter disease: ")
+doctor = input("Enter doctor name: ")
+
+patient = Patient(name, age, disease)
+patient.assign_doctor(doctor)
+patient.display_patient()

@@ -10,11 +10,21 @@ class Student:
         return average
 
     def display_student(self):
+        print("\nStudent Details")
         print("Student Name:", self.name)
         print("Roll No:", self.roll_no)
         print("Marks:", self.marks)
         print("Average Marks:", self.average_marks())
 
 
-student1 = Student("Meera", 21, [80, 75, 90])
-student1.display_student()
+name = input("Enter student name: ")
+roll_no = int(input("Enter roll number: "))
+
+marks = []
+n = int(input("Enter number of subjects: "))
+for i in range(n):
+    mark = float(input("Enter marks: "))
+    marks.append(mark)
+
+student = Student(name, roll_no, marks)
+student.display_student()

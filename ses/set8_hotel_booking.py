@@ -9,12 +9,21 @@ class Room:
         self.booked = True
 
     def display_booking(self):
+        print("\nBooking Details")
         print("Room Number:", self.room_number)
         print("Room Type:", self.room_type)
         print("Price:", self.price)
         print("Booked:", self.booked)
 
 
-room1 = Room(101, "Deluxe", 2500)
-room1.book_room()
-room1.display_booking()
+room_number = int(input("Enter room number: "))
+room_type = input("Enter room type: ")
+price = float(input("Enter room price: "))
+
+room = Room(room_number, room_type, price)
+
+choice = input("Do you want to book this room? (yes/no): ")
+if choice.lower() == "yes":
+    room.book_room()
+
+room.display_booking()

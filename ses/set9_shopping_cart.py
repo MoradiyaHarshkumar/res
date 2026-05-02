@@ -8,17 +8,27 @@ class CartItem:
         return self.price * self.quantity
 
     def display_item(self):
+        print("\nItem Details")
         print("Item Name:", self.name)
         print("Price:", self.price)
         print("Quantity:", self.quantity)
         print("Item Total:", self.item_total())
 
 
-item1 = CartItem("Notebook", 50, 4)
-item2 = CartItem("Pen", 10, 5)
-total_bill = item1.item_total() + item2.item_total()
+n = int(input("Enter number of items: "))
+items = []
 
-item1.display_item()
-print()
-item2.display_item()
-print("Total Bill:", total_bill)
+for i in range(n):
+    print("\nEnter item", i + 1, "details")
+    name = input("Enter item name: ")
+    price = float(input("Enter item price: "))
+    quantity = int(input("Enter item quantity: "))
+    item = CartItem(name, price, quantity)
+    items.append(item)
+
+total_bill = 0
+for item in items:
+    item.display_item()
+    total_bill = total_bill + item.item_total()
+
+print("\nTotal Bill:", total_bill)

@@ -14,12 +14,22 @@ class BankAccount:
             print("Insufficient balance")
 
     def display_account(self):
+        print("\nAccount Details")
         print("Name:", self.name)
         print("Account Number:", self.account_number)
         print("Balance:", self.balance)
 
 
-account1 = BankAccount("Raj", 123456, 5000)
-account1.deposit(2000)
-account1.withdraw(1000)
-account1.display_account()
+name = input("Enter account holder name: ")
+account_number = int(input("Enter account number: "))
+balance = float(input("Enter opening balance: "))
+
+account = BankAccount(name, account_number, balance)
+
+deposit_amount = float(input("Enter deposit amount: "))
+account.deposit(deposit_amount)
+
+withdraw_amount = float(input("Enter withdraw amount: "))
+account.withdraw(withdraw_amount)
+
+account.display_account()
